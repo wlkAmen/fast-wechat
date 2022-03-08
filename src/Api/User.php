@@ -78,7 +78,7 @@ class User
         return $this->httpClient->get($uri, ['department_id' => $departmentId, 'fetch_child' => (int)$fetchChild]);
     }
 
-    public function list1(int $departmentId, bool $fetchChild = false, bool $needDetail = false): array
+    public function list2(int $departmentId, bool $fetchChild = false, bool $needDetail = false): array
     {
         $uri = 'user/' . ($needDetail ? 'list' : 'simplelist');
 
