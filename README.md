@@ -1,6 +1,6 @@
 # fast-wechat
 
-基于 [pithyone/wechat](https://github.com/pithyone/wechat),新增了一些接口
+基于 [pithyone/wechat](https://github.com/pithyone/wechat),新增接口
 
 ## Requirement
 
