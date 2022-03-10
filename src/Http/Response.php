@@ -13,9 +13,9 @@ class Response extends \GuzzleHttp\Psr7\Response
 
         $data = json_decode((string)$stream, true);
 
-        if (JSON_ERROR_NONE === json_last_error() && $data['errcode'] !== 0) {
+/*        if (JSON_ERROR_NONE === json_last_error() && $data['errcode'] !== 0) {
             throw new \InvalidArgumentException($data['errmsg'], $data['errcode']);
-        }
+        }*/
 
         return $stream;
     }
