@@ -4,7 +4,7 @@ namespace WeWork\Api;
 
 use WeWork\Traits\HttpClientTrait;
 
-class CRM
+class Crm
 {
     use HttpClientTrait;
 
@@ -17,5 +17,15 @@ class CRM
     public function getExternalContact(string $externalUserId): array
     {
         return $this->httpClient->get('crm/get_external_contact', ['external_userid' => $externalUserId]);
+    }
+    /**
+     * 获取客户列表
+     *
+     * @param array $json
+     * @return array
+     */
+    public function list(string $id): array
+    {
+        return $this->httpClient->postJson('externalcontact/list', ['userid' => $id]);
     }
 }

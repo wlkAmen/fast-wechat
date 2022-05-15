@@ -57,4 +57,24 @@ class AppChat
             array_merge(['chatid' => $id], $responseMessage->formatForResponse(), ['safe' => (int)$safe])
         );
     }
+
+    /**
+     * 获取客户群列表
+     *
+     * @return array
+     */
+    public function getList(array $json): array
+    {
+        return $this->httpClient->postJson('externalcontact/groupchat/list', $json);
+    }
+
+    /**
+     * 获取客户群列表
+     *
+     * @return array
+     */
+    public function getDetail(array $json): array
+    {
+        return $this->httpClient->postJson('externalcontact/groupchat/get', $json);
+    }
 }

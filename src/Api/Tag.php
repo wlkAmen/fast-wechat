@@ -11,42 +11,34 @@ class Tag
     /**
      * 创建标签
      *
-     * @param string $name
-     * @param int $id
+     * @param array $json
      * @return array
      */
-    public function create(string $name, int $id = 0): array
+    public function create(array $json): array
     {
-        $json = ['tagname' => $name];
-
-        if ($id > 0) {
-            $json['tagid'] = $id;
-        }
-
-        return $this->httpClient->postJson('tag/create', $json);
+        return $this->httpClient->postJson('externalcontact/add_corp_tag', $json);
     }
 
     /**
      * 更新标签名字
      *
-     * @param int $id
-     * @param string $name
+     * @param array $json
      * @return array
      */
-    public function update(int $id, string $name): array
+    public function update(array $json): array
     {
-        return $this->httpClient->postJson('tag/update', ['tagid' => $id, 'tagname' => $name]);
+        return $this->httpClient->postJson('externalcontact/edit_corp_tag', $json);
     }
 
     /**
      * 删除标签
      *
-     * @param int $id
+     * @param array $json
      * @return array
      */
-    public function delete(int $id): array
+    public function delete(array $json): array
     {
-        return $this->httpClient->get('tag/delete', ['tagid' => $id]);
+        return $this->httpClient->postJson('externalcontact/del_corp_tag', $json);
     }
 
     /**
@@ -68,7 +60,7 @@ class Tag
      */
     public function addUsers(array $json): array
     {
-        return $this->httpClient->postJson('tag/addtagusers', $json);
+        return $this->httpClient->postJson('externalcontact/mark_tag', $json);
     }
 
     /**
@@ -79,7 +71,7 @@ class Tag
      */
     public function delUsers(array $json): array
     {
-        return $this->httpClient->postJson('tag/deltagusers', $json);
+        return $this->httpClient->postJson('externalcontact/mark_tag', $json);
     }
 
     /**
@@ -89,6 +81,15 @@ class Tag
      */
     public function list(): array
     {
-        return $this->httpClient->get('tag/list');
+        return $this->httpClient->get('externalcontact/get_corp_tag_list');
+    }
+    /**
+     * 获取标签列表
+     *
+     * @return array
+     */
+    public function listSingle(array $json): array
+    {
+        return $this->httpClient->postJson('externalcontact/get_corp_tag_list',$json);
     }
 }
